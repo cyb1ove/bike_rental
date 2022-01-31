@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5", 
-    "module": "es2015",
+    "target": "es2015", 
+    "module": "amd",
     "moduleResolution": "node",
     "declaration": true, 
     "strict": true,
     "declarationMap": true,
-    "rootDir": ".",   
-    "composite": true,    
+    "rootDir": ".",
+    "outDir": "./lib/",
+    "composite": true,
+    "sourceMap": true
   },
   "include": ["./**/*.ts", "./**/*.tsx"],
   "references": [

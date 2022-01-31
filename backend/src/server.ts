@@ -1,12 +1,11 @@
-import express from 'express';
-import { Request, Response } from 'express';
+import app from './app';
+import seedDB from './database/seed';
 
-const app = express();
+if (process.argv[2] === 'init') {
+  seedDB();
+}
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Application works!');
+app.listen(3000, function() {
+  console.log('Server listeing on port 3000');
 });
 
-app.listen(3000, () => {
-  console.log('Application started on port 3000!');
-});

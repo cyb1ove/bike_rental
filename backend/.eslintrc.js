@@ -31,6 +31,6 @@ module.exports = {
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/restrict-template-expressions": "warn",
-    "jsdoc/newline-after-description": "off"
+    "jsdoc/newline-after-description": "off",
   },
 };
