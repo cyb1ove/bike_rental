@@ -13,7 +13,7 @@ type Props = {
 const Button: React.FC<Props> = ({ children, request, disabled = false }) => (
   <button
     type="button"
-    onClick={() => new Loader().exec(request)}
+    onClick={() => new Loader().exec('bikes', request)}
     disabled={disabled}
   >
     { children }

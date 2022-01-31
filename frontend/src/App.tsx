@@ -14,13 +14,14 @@ function App() {
   let loader;
 
   useEffect(() => {
-    loader = new Loader(setBikes);
-    loader.exec(() => API.get('/list'));
+    loader = new Loader('bikes', [setBikes]);
+    loader.exec('bikes', () => API.get('/list'));
   }, []);
 
   return (
     <ContentGroup
       title="Awesome Bike Rental"
+      primary
     >
       <ContentGroup
         title="Create new rent"

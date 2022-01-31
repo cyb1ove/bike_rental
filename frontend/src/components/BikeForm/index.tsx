@@ -12,7 +12,7 @@ const BikeForm: React.FC = () => {
   } = useForm<AvailableBike>();
 
   const onSubmit = (data: AvailableBike) => (
-    new Loader().exec(() => API.post('/', data))
+    new Loader().exec('bikes', () => API.post('/', data))
   );
 
   return (

@@ -1,30 +1,42 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-constructor-return */
-import { Dispatch, SetStateAction } from 'react';
-import { LoaderInterface, RequestCallback, AvailableBike } from '../../types';
+import {
+  RequestCallback,
+  SettersArray,
+  SettersObject,
+  Setter,
+  ServerResponse,
+  DataResponce,
+} from '../../types';
 
-class Loader implements LoaderInterface {
+class Loader {
   static instance: any;
 
-  constructor(public setter?: Dispatch<SetStateAction<AvailableBike[]>>) {
-    this.setter = setter;
+  public setters: SettersObject = {};
+
+  constructor(key?: string, newSetters?: SettersArray) {
+    let currentThis;
 
     if (typeof Loader.instance === 'object') {
-      return Loader.instance;
+      currentThis = Loader.instance;
+    } else {
+      Loader.instance = this;
+      currentThis = this;
     }
 
-    Loader.instance = this;
+    if (key && newSetters) {
+      currentThis.setters[key] = newSetters;
+    }
 
-    return this;
+    return currentThis;
   }
 
-  async exec(request: RequestCallback): Promise<void> {
-    console.log(request);
-    const response = await request();
+  async exec(key: keyof DataResponce, request: RequestCallback): Promise<void> {
+    const response = await request() as ServerResponse;
 
-    if (this.setter) {
-      this.setter(response.data.bikes);
-    }
+    this.setters[key].forEach((setter: Setter) => {
+      setter(response.data[key]);
+    });
   }
 }
 

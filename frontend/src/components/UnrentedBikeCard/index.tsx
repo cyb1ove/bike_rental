@@ -6,6 +6,7 @@ import { AvailableBike } from '../../../types';
 import BikeCard from '../BikeCard';
 import Button from '../Button';
 import API from '../../services/api';
+import Loader from '../../services/loaders';
 
 type Props = {
   bike: AvailableBike;
@@ -14,6 +15,7 @@ type Props = {
 
 const UnrentedBikeCard: React.FC<Props> = ({ bike, onSetAmountPrice = () => {} }) => {
   const [actualPrice, setActualPrice] = useState<number>(0);
+  // let loader;
 
   useEffect(() => {
     const loadPrice = async () => {
@@ -24,6 +26,8 @@ const UnrentedBikeCard: React.FC<Props> = ({ bike, onSetAmountPrice = () => {} }
     };
 
     loadPrice();
+    // const loader = new Loader('currentPrice', [setActualPrice, onSetAmountPrice]);
+    // loader.exec('currentPrice', () => API.get(`${bike._id}/price`));
   }, []);
 
   useEffect(() => () => {

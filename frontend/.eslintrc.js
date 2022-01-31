@@ -42,5 +42,6 @@ module.exports = {
     'import/no-relative-packages': 'off',
     'react/function-component-definition': 'off',
     'eslint-disable react/jsx-curly-spacing': 'off',
+    'missing-optional-annotation': 'off',
   },
 };

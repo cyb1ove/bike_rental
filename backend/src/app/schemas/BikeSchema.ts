@@ -59,7 +59,7 @@ bikeSchema.statics.deleteBike = async function (_id): Promise<BikeDocument[]> {
 }
 
 bikeSchema.statics.setRentTimeRange = async function (_id, time): Promise<void> {
-  const duration = moment.duration(time).asMilliseconds();
+  const duration = time * 3600000;
 
   await this.findOneAndUpdate({ _id }, {
     rent_start: Date.now(),
