@@ -23,10 +23,16 @@ const BikeForm: React.FC = () => {
           Bike name:
           <input {...register('name')} />
         </label>
+
         <label htmlFor="type">
           Bike type:
-          <input {...register('type')} />
+          <select {...register('type')}>
+            <option value="Road">Road</option>
+            <option value="Mountain">Mountain</option>
+            <option value="Touring">Touring</option>
+          </select>
         </label>
+
         <label htmlFor="price">
           Rent price:
           <input {...register('price')} />
