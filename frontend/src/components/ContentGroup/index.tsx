@@ -7,10 +7,9 @@ import useAdder from '../../hooks/useAdder';
 type Props = {
   children: ReactNode[] | ReactNode;
   title?: string;
-  primary?: boolean;
 }
 
-const ContentGroup: React.FC<Props> = ({ children, title = 'Some data', primary }) => {
+const ContentGroup: React.FC<Props> = ({ children, title = 'Some data' }) => {
   const [amountPrice, setAmountPrice] = useAdder(0);
   const childrenData = React.Children.toArray(children) as ChildrenArray[];
 
@@ -24,9 +23,7 @@ const ContentGroup: React.FC<Props> = ({ children, title = 'Some data', primary 
   });
 
   return (
-    <section
-      className={className}
-    >
+    <section>
       <h3>{interpolatedTitle}</h3>
       {
         React.Children.map((children), (child) => {

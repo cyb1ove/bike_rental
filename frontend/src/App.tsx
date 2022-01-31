@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
-import './App.scss';
+import { MainGroup, SecondaryGroup } from './style';
 import { AvailableBike } from '../types';
 import API from './services/api';
 import ContentGroup from './components/ContentGroup';
@@ -19,46 +19,53 @@ function App() {
   }, []);
 
   return (
-    <ContentGroup
-      title="Awesome Bike Rental"
-      primary
-    >
+    <MainGroup>
       <ContentGroup
-        title="Create new rent"
+        title="Awesome Bike Rental"
       >
-        <BikeForm />
-      </ContentGroup>
+        <SecondaryGroup>
+          <ContentGroup
+            title="Create new rent"
+          >
+            <BikeForm />
+          </ContentGroup>
+        </SecondaryGroup>
 
-      <ContentGroup
-        title="Your rent(Total: $<%-amountPrice%>)"
-      >
-        {
-          bikes
-            .filter((bike) => bike.rent)
-            .map((bike) => (
-              <UnrentedBikeCard
-                key={bike._id}
-                bike={bike}
-              />
-            ))
-        }
-      </ContentGroup>
+        <SecondaryGroup>
+          <ContentGroup
+            title="Your rent (Total: $<%-amountPrice%>)"
+          >
+            {
+              bikes
+                .filter((bike) => bike.rent)
+                .map((bike) => (
+                  <UnrentedBikeCard
+                    key={bike._id}
+                    bike={bike}
+                  />
+                ))
+            }
+          </ContentGroup>
+        </SecondaryGroup>
 
-      <ContentGroup
-        title="Available bicycles (<%-count%>)"
-      >
-        {
-          bikes
-            .filter((bike) => !bike.rent)
-            .map((bike) => (
-              <RentedBikeCard
-                key={bike._id}
-                bike={bike}
-              />
-            ))
-        }
+        <SecondaryGroup>
+          <ContentGroup
+            title="Available bicycles (<%-count%>)"
+          >
+            {
+              bikes
+                .filter((bike) => !bike.rent)
+                .map((bike) => (
+                  <RentedBikeCard
+                    key={bike._id}
+                    bike={bike}
+                  />
+                ))
+            }
+          </ContentGroup>
+        </SecondaryGroup>
       </ContentGroup>
-    </ContentGroup>
+    </MainGroup>
   );
 }
 
