@@ -10,11 +10,6 @@ type Props = {
   disabled?: boolean;
 };
 
-const myTheme = {
-  '$btn-primary-bg': 'blue',
-  '$btn-primary-color': 'white',
-};
-
 const Button: React.FC<Props> = ({
   children,
   request,

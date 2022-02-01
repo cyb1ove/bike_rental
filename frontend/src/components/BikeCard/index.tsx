@@ -10,7 +10,7 @@ type Props = {
 
 const BikeCard: React.FC<Props> = ({ children, bike, currentPrice }) => {
   const price = (currentPrice || Number(bike.price)).toFixed(2);
-  const textOfCard = `${bike.name} / ${bike.type} / ${price}`;
+  const textOfCard = `${bike.name} / ${bike.type} / $${price}`;
 
   return (
     <CardStyle
