@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { AvailableBike } from '../types';
-import MainGroup from './style';
+import { MainGroup, MainTitle } from './style';
 import API from './services/api';
 import ContentGroup from './components/ContentGroup';
 import BikeForm from './components/BikeForm';
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <MainGroup>
-      <h1>Awesome Bike Rental</h1>
+      <MainTitle>Awesome Bike Rental</MainTitle>
 
       <ContentGroup
         title="Create new rent"

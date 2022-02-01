@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MainGroup = styled.section`
+export const MainGroup = styled.section`
   width: fit-content;
   margin: auto;
   > h1 {
@@ -8,4 +8,6 @@ const MainGroup = styled.section`
   }
 `;
 
-export default MainGroup;
+export const MainTitle = styled.h1`
+  margin: 2em 0 1em 0;
+`;
