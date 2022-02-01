@@ -38,7 +38,7 @@ const BikeForm: React.FC = () => {
 
         <label htmlFor="price">
           <span>Rent price:</span>
-          <input {...register('price')} />
+          <input type="number" {...register('price')} />
         </label>
 
         <StyledButton
