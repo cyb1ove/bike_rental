@@ -1,7 +1,6 @@
-/* eslint-disable react/require-default-props */
 import React, { ReactElement } from 'react';
 import { AvailableBike } from '../../../types';
-import { CardStyle } from './styles';
+import { CardStyle, TextContentStyle, ControlPanelStyle } from './styles';
 
 type Props = {
   children: ReactElement | ReactElement[] | null;
@@ -10,16 +9,20 @@ type Props = {
 };
 
 const BikeCard: React.FC<Props> = ({ children, bike, currentPrice }) => {
-  const textOfCard = `${bike.name}\\${bike.type}\\${currentPrice || bike.price}`;
+  const price = (currentPrice || Number(bike.price)).toFixed(2);
+  const textOfCard = `${bike.name} / ${bike.type} / ${price}`;
 
   return (
-    <CardStyle>
-      <span>
+    <CardStyle
+      color="white"
+    >
+      <TextContentStyle>
         {textOfCard}
-      </span>
-      <span>
+      </TextContentStyle>
+
+      <ControlPanelStyle>
         {children}
-      </span>
+      </ControlPanelStyle>
     </CardStyle>
   );
 };

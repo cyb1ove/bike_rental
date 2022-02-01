@@ -19,7 +19,8 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": [
-    "src", "types", "components", "utils", "common", "TokenContext", "services", "cards", "BikeForm", "hooks", "src/style.tsx", "./global", "BikeCard"
+    "src/**/tsx",
+    "package.json",
   ],
   "references": [
     {

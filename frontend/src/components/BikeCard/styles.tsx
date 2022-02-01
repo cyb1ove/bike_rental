@@ -1,30 +1,36 @@
 import styled from 'styled-components';
+import { Colors } from '../../../types';
+
+type Props = {
+  color: keyof Colors;
+}
+
+const colors: Partial<Colors> = {
+  white: '#FFFFFF',
+  gray: '#f0ecec',
+};
 
 export const CardStyle = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
-
-  border: 2px solid #E7E7E7;
-  font-size: 0.9em;
-  background-color: white;
+  min-height: 2.5rem;
+  background: ${(props: Props) => (props.color ? colors[props.color] : 'white')};
+  border: 2px solid #E6E6E6;
+  font-size: 1.3em;
   border-radius: 3px;
   margin-bottom: 1.5em;
-
-  > :first-child {
-    padding: 1em 2em;
-  }
+  padding: 0.7em 1.4em;
 `;
 
-export const FormStyle = styled.form`
+export const TextContentStyle = styled.span`
+  align-self: center;
+  background-color: inherit;
+`;
+
+export const ControlPanelStyle = styled.span`
   display: flex;
-  background-color: #E9EAEE;
-  height: 100%;
-  
-  label {
-    display: flex;
-    flex-direction: column;
-    background-color: inherit;
-  }
+  flex-direction: row;
+  gap: 1.2rem;
+  background-color: inherit;
 `;

@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react';
 import { AvailableBike } from '../../../types';
 import BikeCard from '../BikeCard';
@@ -32,6 +31,7 @@ const RentedBikeCard: React.FC<Props> = ({ bike }) => {
             time: rentTime,
           },
         })}
+        color="blue"
         disabled={!rentTime}
       >
         Rent
@@ -39,6 +39,7 @@ const RentedBikeCard: React.FC<Props> = ({ bike }) => {
 
       <Button
         request={() => API.delete(bike._id)}
+        color="red"
       >
         Delete
       </Button>

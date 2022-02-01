@@ -43,5 +43,9 @@ module.exports = {
     'react/function-component-definition': 'off',
     'eslint-disable react/jsx-curly-spacing': 'off',
     'missing-optional-annotation': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
+    'no-underscore-dangle': 'off',
+    'no-unused-vars': 'off',
   },
 };

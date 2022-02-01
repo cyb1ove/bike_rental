@@ -1,10 +1,11 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { AvailableBike } from '../../../types';
 import API from '../../services/api';
 import Loader from '../../services/loaders';
-import { CardStyle, FormStyle } from '../BikeCard/styles';
+import { CardStyle } from '../BikeCard/styles';
+import FormStyle from './style';
+import StyledButton from '../Button/styles';
 
 const BikeForm: React.FC = () => {
   const {
@@ -17,15 +18,17 @@ const BikeForm: React.FC = () => {
   );
 
   return (
-    <CardStyle>
+    <CardStyle
+      color="gray"
+    >
       <FormStyle onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="name">
-          Bike name:
+          <span>Bike name:</span>
           <input {...register('name')} />
         </label>
 
         <label htmlFor="type">
-          Bike type:
+          <span>Bike type:</span>
           <select {...register('type')}>
             <option value="Road">Road</option>
             <option value="Mountain">Mountain</option>
@@ -34,10 +37,16 @@ const BikeForm: React.FC = () => {
         </label>
 
         <label htmlFor="price">
-          Rent price:
+          <span>Rent price:</span>
           <input {...register('price')} />
         </label>
-        <button type="submit">Submit rent</button>
+
+        <StyledButton
+          type="submit"
+          color="green"
+        >
+          Submit rent
+        </StyledButton>
       </FormStyle>
     </CardStyle>
   );

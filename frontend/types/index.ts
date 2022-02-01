@@ -30,3 +30,11 @@ export type DataResponce = {
 export type ServerResponse = {
   data: DataResponce;
 }
+
+export interface Colors {
+  white: string,
+  gray: string,
+  blue: string,
+  green: string,
+  red: string,
+}

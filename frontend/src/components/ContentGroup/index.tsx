@@ -1,6 +1,6 @@
-/* eslint-disable react/require-default-props */
 import _ from 'lodash';
 import React, { ReactNode } from 'react';
+import { ContentArticle, ContentTitle } from './styles';
 import { ChildrenArray } from '../../../types';
 import useAdder from '../../hooks/useAdder';
 
@@ -19,12 +19,12 @@ const ContentGroup: React.FC<Props> = ({ children, title = 'Some data' }) => {
 
   const interpolatedTitle = _.template(title)({
     count: childrenData.length,
-    amountPrice,
+    amountPrice: amountPrice.toFixed(2),
   });
 
   return (
-    <section>
-      <h3>{interpolatedTitle}</h3>
+    <ContentArticle>
+      <ContentTitle>{interpolatedTitle}</ContentTitle>
       {
         React.Children.map((children), (child) => {
           if (React.isValidElement(child)) {
@@ -34,7 +34,7 @@ const ContentGroup: React.FC<Props> = ({ children, title = 'Some data' }) => {
           return child;
         })
       }
-    </section>
+    </ContentArticle>
   );
 };
 

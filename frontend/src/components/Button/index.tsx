@@ -1,23 +1,34 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable no-unused-vars */
-import React, { MouseEventHandler, ReactNode } from 'react';
-import { Request, RequestCallback, HandlerType } from '../../../types';
+import React from 'react';
+import { RequestCallback, Colors } from '../../../types';
 import Loader from '../../services/loaders';
+import StyledButton from './styles';
 
 type Props = {
   children: string;
-  request: RequestCallback;
+  request?: RequestCallback;
+  color?: keyof Colors;
   disabled?: boolean;
 };
 
-const Button: React.FC<Props> = ({ children, request, disabled = false }) => (
-  <button
+const myTheme = {
+  '$btn-primary-bg': 'blue',
+  '$btn-primary-color': 'white',
+};
+
+const Button: React.FC<Props> = ({
+  children,
+  request,
+  disabled = false,
+  color = 'gray',
+}) => (
+  <StyledButton
     type="button"
-    onClick={() => new Loader().exec('bikes', request)}
+    onClick={request && (() => new Loader().exec('bikes', request))}
     disabled={disabled}
+    color={color}
   >
     { children }
-  </button>
+  </StyledButton>
 );
 
 export default Button;
