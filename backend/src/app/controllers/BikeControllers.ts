@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import BikeModel from '../models/BikeModel';
 
 export default {
@@ -12,13 +12,13 @@ export default {
       return response.status(500).json({ success: false, error })
     }
   },
-  onGetUsers: async (request: Request, response: Response): Promise<Response> => {
+  onGetUsers: async (request: Request, response: Response , next: NextFunction): Promise<Response | void> => {
     try {
       const bikes = await BikeModel.getAllBikes();
 
       return response.status(200).json({ success: true, bikes })
     } catch (error) {
-      return response.status(500).json({ success: false, error })
+      next(error);
     }
   },
   onSetBikeIsRented: async (request: Request, response: Response): Promise<Response> => {
