@@ -3,7 +3,6 @@ import { AvailableBike } from '../../../types';
 import BikeCard from '../BikeCard';
 import Button from '../Button';
 import API from '../../services/api';
-import Loader from '../../services/loaders';
 
 type Props = {
   bike: AvailableBike;
@@ -22,13 +21,13 @@ const UnrentedBikeCard: React.FC<Props> = ({ bike, onSetAmountPrice = () => {} }
     };
 
     loadPrice();
-  }, []);
+  }, [bike._id, onSetAmountPrice]);
 
   useEffect(() => () => {
     if (actualPrice) {
       onSetAmountPrice(-actualPrice);
     }
-  }, [actualPrice]);
+  }, [actualPrice, onSetAmountPrice]);
 
   return (
     <BikeCard
